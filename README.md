@@ -1,5 +1,7 @@
 <p align="center">
-<img src="https://i.imgur.com/Clzj7Xs.png" alt="osTicket logo"/>
+
+  ![geORXiQ](https://github.com/user-attachments/assets/6e191feb-e704-486a-b7c5-65fc890dda60)
+
 </p>
 
 <h1>Performing Network Activities - Prerequisites and Installation</h1>
@@ -15,7 +17,8 @@ This tutorial outlines creations of Azure VMs and installing Wireshark within th
 
 <h2>Operating Systems Used </h2>
 
-- Windows 10</b> (21H2)
+- Windows 10 pro</b> (22H2)
+- Linux (Ubuntu)
 
 
 <h2>Installation Steps</h2>
@@ -24,22 +27,60 @@ This tutorial outlines creations of Azure VMs and installing Wireshark within th
 <img src="https://imgur.com/7bQ1DAk.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-We start off at the home page in Azure and we navigate to create a resource group that will contain our Virtual Machines.
+We start off at the home page in Azure and we navigate to create a resource group that I have labeled as Wireshark-Networking and that will contain our Virtual Machines.
 </p>
 <br />
 
 <p>
-<img src="https://imgur.com/7bQ1DAk.png" height="80%" width="80%" alt="Disk Sanitization Steps"/> 
+  
+ ![Win10 vm](https://github.com/user-attachments/assets/69bcee0d-6890-48cf-b171-43a319cdffa0)
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+After the resource group is created, we then proceed to make the Windows 10 virtual machine. When creating the VM I have to make sure the Resource group it uses is the one I created in the previous step (Wireshark-Networking) and it will also create a new Virtual Network and Subnet. Also, creating a username and password for the VM is required.
 </p>
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+  
+![Linux vm](https://github.com/user-attachments/assets/4fa36756-cf4a-4a7c-8f41-fddf17a4bd12)
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+We then repeat the last step but in this case we are making a Linux (Ubuntu) VM, making sure that it is using the same Resource group and Virtual Network as the Windows 10 VM (circled in yellow).
+</p>
+<br />
+
+<p>
+  
+![Connecting to Win 10 VM](https://github.com/user-attachments/assets/31ddab6f-10c8-4770-b37a-60ab95df32e8)
+</p>
+<p>
+Now that both VMs are created, we can now connect to the Windows 10 VM using Microsoft Remote Desktop. We do this by taking the Windows 10 VM's Public IP Address (Circled in red) and pasting into remote desktop. When clicking connect, it will ask for a username and password which is what we entered when creating the VM in Azure.
+</p>
+<br />
+
+<p>
+</p>
+Once we are connected to the Windows 10 VM, we can now navigate to Microsoft edge and install wireshark.
+</p>
+<br />
+
+<p>
+
+![Wireshark Packet Capture](https://github.com/user-attachments/assets/033702bf-c4d6-4ed6-af17-8dc7727156be)
+</p>
+Once Wireshark is installed, we can begin packet capture (Circled in red).
+</p>
+<br />
+
+<p>
+
+![Network Traffic](https://github.com/user-attachments/assets/a4dfa8c2-ce07-4da8-a121-eb8d0c16d020)
+</p>
+After starting the packet capture in wireshark, it will start showing the constant network traffic within our network which is why we set a filter to display the icmp traffic only (circled in red). When we use the ping command in Windows Powershell to ping the Linux VM or google.com as another example, we can see when the Windows VM is sending a request to the Linux VM and receiving a reply (circled in yellow). When pinging within powershell, it sends 4 pings and at the end it will show how many were received indicating the ping was successful. I repeat this step pinging to google.com and we get the same result (circled in green). The private IP addresses for the VMs and for google.com are listed below which allows you to see how they interacted with each other when pinging.
+
+- Windows VM- 10.1.0.4
+- Linux VM- 10.1.0.5
+- google.com- 142.251.33.164
+
 </p>
 <br />
