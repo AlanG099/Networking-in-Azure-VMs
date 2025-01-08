@@ -4,8 +4,8 @@
 
 </p>
 
-<h1>Performing Network Activities - Prerequisites and Installation</h1>
-This tutorial outlines creations of Azure VMs and installing Wireshark within the VMs.<br />
+<h1>Performing Network Activities and Configuring a Firewall - Prerequisites and Installation</h1>
+This tutorial outlines creations of Azure VMs and installing Wireshark within the VMs. We also perform some basic network activities between the VMs and observe the results in Wireshark. <br />
 
 
 
@@ -82,5 +82,29 @@ After starting the packet capture in wireshark, it will start showing the consta
 - Linux VM- 10.1.0.5
 - google.com- 142.251.33.164
 
+</p>
+<br />
+
+<p>
+
+![nonstop ping to linux vm](https://github.com/user-attachments/assets/6355b135-4d9e-4a42-9b58-6080c79a56d3)
+</p>
+We can now initiate a continuous ping from the Windows 10 VM to the Linux VM. We do this by entering the ping -t command in powershell in the Windows 10 VM (Circled in red). You can now see the constant pings displaying in Wireshark as they happen in Powershell.
+</p>
+<br />
+
+<p>
+
+![adding rule](https://github.com/user-attachments/assets/71b9745e-2f2d-4164-8815-295b968eac4d)
+</p>
+Next, we navigate back to Azure and select the Linux VM and go to its network settings. We are going to configure the Firewall for the Linux VM by disabling incoming ICMP traffic. After selecting the firewall for the Linux VM, I add a rule that allows us to disable the incoming ICMP traffic (shown above).
+</p>
+<br />
+
+<p>
+
+![No response](https://github.com/user-attachments/assets/6958ee85-9c8d-4026-9fcd-c04d42be7854)
+</p>
+After adding that rule for the firewall of the Linux VM, it is now not allowing any ICMP traffic. Since we did this while the Windows VM was pinging the Linux VM, it is now showing that the ping request are no longer getting a response from the Linux VM as a result from this (Displayed back on the Windows 10 VM on Wireshark and Powershell.
 </p>
 <br />
