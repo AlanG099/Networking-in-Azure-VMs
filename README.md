@@ -5,7 +5,7 @@
 </p>
 
 <h1>Performing Network Activities and Configuring a Firewall - Prerequisites and Installation</h1>
-This tutorial outlines creations of Azure VMs and installing Wireshark within the VMs. We also perform some basic network activities between the VMs and observe the results in Wireshark. <br />
+This tutorial outlines the creations of Azure VMs and installing Wireshark within the VMs. We also perform some basic network activities between the VMs and observe the results in Wireshark. <br />
 
 
 
@@ -14,6 +14,7 @@ This tutorial outlines creations of Azure VMs and installing Wireshark within th
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
 - Wireshark (Within the VMs)
+- Windows Powershell
 
 <h2>Operating Systems Used </h2>
 
@@ -45,7 +46,7 @@ After the resource group is created, we then proceed to make the Windows 10 virt
 ![Linux vm](https://github.com/user-attachments/assets/4fa36756-cf4a-4a7c-8f41-fddf17a4bd12)
 </p>
 <p>
-We then repeat the last step but in this case we are making a Linux (Ubuntu) VM, making sure that it is using the same Resource group and Virtual Network as the Windows 10 VM (circled in yellow).
+We then repeat the last step but in this case we are making a Linux (Ubuntu) VM, making sure that it uses the same Resource group and Virtual Network as the Windows 10 VM (circled in yellow).
 </p>
 <br />
 
@@ -105,6 +106,6 @@ Next, we navigate back to Azure and select the Linux VM and go to its network se
 
 ![No response](https://github.com/user-attachments/assets/6958ee85-9c8d-4026-9fcd-c04d42be7854)
 </p>
-After adding that rule for the firewall of the Linux VM, it is now not allowing any ICMP traffic. Since we did this while the Windows VM was pinging the Linux VM, it is now showing that the ping request are no longer getting a response from the Linux VM as a result from this (Displayed back on the Windows 10 VM on Wireshark and Powershell.
+After adding that rule for the firewall of the Linux VM, it is not allowing any ICMP traffic. Since we did this while the Windows VM was pinging the Linux VM, it is showing that the ping request are no longer getting a response from the Linux VM as a result from this (Displayed back on the Windows 10 VM on Wireshark and Powershell.
 </p>
 <br />
